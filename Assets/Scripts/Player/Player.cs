@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     #region State References
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
+    public PlayerJumpState JumpState { get; private set; }
+    public PlayerAirState AirState { get; private set; }
     #endregion
 
     #region Component References
@@ -18,6 +20,11 @@ public class Player : MonoBehaviour
     void Awake()
     {
         StateMachine = new PlayerStateMachine();
+
+        IdleState = new PlayerIdleState(this, StateMachine, "Idle");
+        MoveState = new PlayerMoveState(this, StateMachine, "Move");
+        JumpState = new PlayerJumpState(this, StateMachine, "Jump");
+        AirState = new PlayerAirState(this, StateMachine, "Jump");
 
         Animator = GetComponentInChildren<Animator>();
         Rigidbody2D = GetComponent<Rigidbody2D>();
