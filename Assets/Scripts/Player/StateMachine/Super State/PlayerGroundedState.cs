@@ -17,6 +17,12 @@ public class PlayerGroundedState : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if (jumpInput)
+        {
+            player.InputHandler.JumpInputHelper();
+            stateMachine.ChangeState(player.JumpState);
+        }
     }
 
     public override void PhysicUpdate()
