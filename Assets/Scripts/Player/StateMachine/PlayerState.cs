@@ -4,6 +4,9 @@ public class PlayerState
     protected PlayerStateMachine stateMachine;
     protected Player player;
     #endregion
+    #region Input Variables
+    protected float xInput;
+    #endregion
     #region Variables
     private readonly string animationBool;
     #endregion
@@ -23,7 +26,7 @@ public class PlayerState
 
     public virtual void LogicUpdate()
     {
-
+        xInput = player.InputHandler.HorizontalInput.x;
     }
 
     public virtual void PhysicUpdate()

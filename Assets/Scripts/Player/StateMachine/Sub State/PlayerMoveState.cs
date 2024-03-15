@@ -17,6 +17,9 @@ public class PlayerMoveState : PlayerGroundedState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if (xInput == 0)
+            stateMachine.ChangeState(player.IdleState);
     }
 
     public override void PhysicUpdate()

@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     #region Component References
     public Animator Animator { get; private set; }
     public Rigidbody2D Rigidbody2D { get; private set; }
+    public PlayerInputHandler InputHandler { get; private set; }
     #endregion
 
     void Awake()
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
 
         Animator = GetComponentInChildren<Animator>();
         Rigidbody2D = GetComponent<Rigidbody2D>();
+        InputHandler = GetComponentInChildren<PlayerInputHandler>();
     }
 
     void Start()
