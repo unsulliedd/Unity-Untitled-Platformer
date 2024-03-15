@@ -2,9 +2,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    #region References
     public PlayerStateMachine StateMachine { get; private set; }
+
+    #region State References
+    public PlayerIdleState IdleState { get; private set; }
+    public PlayerMoveState MoveState { get; private set; }
+    #endregion
+
+    #region Component References
     public Animator Animator { get; private set; }
+    public Rigidbody2D Rigidbody2D { get; private set; }
     #endregion
 
     void Awake()
@@ -12,6 +19,7 @@ public class Player : MonoBehaviour
         StateMachine = new PlayerStateMachine();
 
         Animator = GetComponentInChildren<Animator>();
+        Rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     void Start()
