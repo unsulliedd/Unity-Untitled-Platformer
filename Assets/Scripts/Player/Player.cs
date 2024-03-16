@@ -20,8 +20,18 @@ public class Player : MonoBehaviour
     #region Variables
     [Header("Move Info")]
     public float moveSpeed = 10f;
+    public float moveSpeedInAir = 7f;
     public int facingDirection = 1;
     [SerializeField] private bool _isFacingRight = true;
+
+    [Header("Jump Info")]
+    public float jumpForce = 25;
+    public int amountOfJumps = 2;
+    public bool firstJumpCompleted;
+    public float doubleJumpCooldown = 2.5f;
+    public float doubleJumpTimer;
+    public float coyoteTime = 0.2f;
+    public float coyoteJumpTimer;
 
     [Header("Collision Check")]
     [SerializeField] private Transform groundCheck;
@@ -79,6 +89,16 @@ public class Player : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
         _isFacingRight = !_isFacingRight;
         facingDirection *= -1;
+    }
+
+    public void UpdateJumpCounters()
+    {
+        if (CheckIfGrounded())
+            coyoteJumpTimer = coyoteTime;
+        else
+            coyoteJumpTimer -= Time.deltaTime;
+
+        doubleJumpTimer -= Time.deltaTime;
     }
 
     public bool CheckIfGrounded() => Physics2D.OverlapCircle(groundCheck.transform.position, groundCheckDistance, groundLayer);

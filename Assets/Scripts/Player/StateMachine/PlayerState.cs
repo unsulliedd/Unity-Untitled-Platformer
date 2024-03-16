@@ -34,8 +34,12 @@ public class PlayerState
 
     public virtual void LogicUpdate()
     {
+        player.UpdateJumpCounters();
+
         xInput = player.InputHandler.HorizontalInput.x;
         jumpInput = player.InputHandler.JumpInput;
+
+        player.Animator.SetFloat("yVelocity", player.Rigidbody2D.velocity.y);
     }
 
     public virtual void PhysicUpdate()

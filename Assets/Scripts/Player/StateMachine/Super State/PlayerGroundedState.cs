@@ -7,6 +7,8 @@ public class PlayerGroundedState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.firstJumpCompleted = false;
+        player.JumpState.ResetJumps();
     }
 
     public override void Exit()
@@ -18,8 +20,9 @@ public class PlayerGroundedState : PlayerState
     {
         base.LogicUpdate();
 
-        if (jumpInput)
+        if (jumpInput && isGrounded)
         {
+            player.firstJumpCompleted = true;
             player.InputHandler.JumpInputHelper();
             stateMachine.ChangeState(player.JumpState);
         }
