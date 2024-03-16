@@ -9,6 +9,7 @@ public class PlayerState
     protected bool jumpInput;
     #endregion
     #region Variables
+    protected bool isGrounded;
     private readonly string animationBool;
     #endregion
 
@@ -20,8 +21,14 @@ public class PlayerState
         this.animationBool = _animationBool;
     }
 
+    public virtual void CollisionChecks()
+    {
+        isGrounded = player.CheckIfGrounded();
+    }
+
     public virtual void Enter()
     {
+        CollisionChecks();
         player.Animator.SetBool(animationBool, true);
     }
 
@@ -33,7 +40,7 @@ public class PlayerState
 
     public virtual void PhysicUpdate()
     {
-
+        CollisionChecks();
     }
 
     public virtual void Exit()

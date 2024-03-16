@@ -22,6 +22,11 @@ public class Player : MonoBehaviour
     public float moveSpeed = 10f;
     public int facingDirection = 1;
     [SerializeField] private bool _isFacingRight = true;
+
+    [Header("Collision Check")]
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float groundCheckDistance = 0.45f;
     #endregion
 
     void Awake()
@@ -74,5 +79,12 @@ public class Player : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
         _isFacingRight = !_isFacingRight;
         facingDirection *= -1;
+    }
+
+    public bool CheckIfGrounded() => Physics2D.OverlapCircle(groundCheck.transform.position, groundCheckDistance, groundLayer);
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckDistance);
     }
 }
