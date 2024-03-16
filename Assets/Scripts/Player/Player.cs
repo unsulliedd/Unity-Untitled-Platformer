@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : SharedEntity
 {
     public PlayerStateMachine StateMachine { get; private set; }
 
@@ -13,8 +13,6 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Component References
-    public Animator Animator { get; private set; }
-    public Rigidbody2D Rigidbody2D { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     #endregion
 
@@ -40,8 +38,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 0.45f;
     #endregion
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         StateMachine = new PlayerStateMachine();
 
         IdleState = new PlayerIdleState(this, StateMachine, "Idle");
@@ -50,23 +49,24 @@ public class Player : MonoBehaviour
         AirState = new PlayerAirState(this, StateMachine, "Jump");
         AttackState = new PlayerAttackState(this, StateMachine, "Attack");
 
-        Animator = GetComponentInChildren<Animator>();
-        Rigidbody2D = GetComponent<Rigidbody2D>();
         InputHandler = GetComponentInChildren<PlayerInputHandler>();
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         StateMachine.Initialize(IdleState);
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         StateMachine.currentState.LogicUpdate();
     }
 
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
         StateMachine.currentState.PhysicUpdate();
     }
 

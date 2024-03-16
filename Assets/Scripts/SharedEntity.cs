@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class SharedEntity : MonoBehaviour
 {
-    public Rigidbody2D Rigidbody2D { get; private set; }
+    #region Component References
     public Animator Animator { get; private set; }
+    public Rigidbody2D Rigidbody2D { get; private set; }
+    #endregion
 
     protected virtual void Awake()
     {
@@ -13,12 +15,16 @@ public class SharedEntity : MonoBehaviour
 
     protected virtual void Start()
     {
+
     }
 
     protected virtual void Update()
     {
+
     }
+
     protected virtual void FixedUpdate()
     {
+
     }
 }
