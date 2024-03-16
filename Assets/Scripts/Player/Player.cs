@@ -17,6 +17,13 @@ public class Player : MonoBehaviour
     public PlayerInputHandler InputHandler { get; private set; }
     #endregion
 
+    #region Variables
+    [Header("Move Info")]
+    public float moveSpeed = 10f;
+    public int facingDirection = 1;
+    [SerializeField] private bool _isFacingRight = true;
+    #endregion
+
     void Awake()
     {
         StateMachine = new PlayerStateMachine();
@@ -44,5 +51,28 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         StateMachine.currentState.PhysicUpdate();
+    }
+
+    public void SetZeroVelocity() => Rigidbody2D.velocity = Vector2.zero;
+
+    public void SetVelocity(float xVelocity, float yVelocity)
+    {
+        Rigidbody2D.velocity = new Vector2(xVelocity, yVelocity);
+        FlipController();
+    }
+
+    private void FlipController()
+    {
+        if (InputHandler.HorizontalInput.x < 0 && _isFacingRight)
+            Flip();
+        else if (InputHandler.HorizontalInput.x > 0 && !_isFacingRight)
+            Flip();
+    }
+
+    private void Flip()
+    {
+        transform.Rotate(0f, 180f, 0f);
+        _isFacingRight = !_isFacingRight;
+        facingDirection *= -1;
     }
 }
