@@ -25,5 +25,7 @@ public class PlayerMoveState : PlayerGroundedState
     public override void PhysicUpdate()
     {
         base.PhysicUpdate();
+
+        player.SetVelocity(xInput * player.moveSpeed, player.Rigidbody2D.velocity.y);
     }
 }

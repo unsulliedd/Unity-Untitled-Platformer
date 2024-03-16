@@ -9,6 +9,7 @@ public class PlayerState
     protected bool jumpInput;
     #endregion
     #region Variables
+    protected bool isGrounded;
     private readonly string animationBool;
     #endregion
 
@@ -20,20 +21,30 @@ public class PlayerState
         this.animationBool = _animationBool;
     }
 
+    public virtual void CollisionChecks()
+    {
+        isGrounded = player.CheckIfGrounded();
+    }
+
     public virtual void Enter()
     {
+        CollisionChecks();
         player.Animator.SetBool(animationBool, true);
     }
 
     public virtual void LogicUpdate()
     {
+        player.UpdateJumpCounters();
+
         xInput = player.InputHandler.HorizontalInput.x;
         jumpInput = player.InputHandler.JumpInput;
+
+        player.Animator.SetFloat("yVelocity", player.Rigidbody2D.velocity.y);
     }
 
     public virtual void PhysicUpdate()
     {
-
+        CollisionChecks();
     }
 
     public virtual void Exit()
