@@ -1,7 +1,9 @@
-public class EnemyChaseState : EnemyState
+public class GoblinAttackState : EnemyState
 {
-    public EnemyChaseState(Enemy _enemy, EnemyStateMachine _stateMachine, string _animationBool) : base(_enemy, _stateMachine, _animationBool)
+    private EnemyGoblin enemy;
+    public GoblinAttackState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string animationBool, EnemyGoblin _enemy) : base(_enemyBase, _stateMachine, animationBool)
     {
+        enemy = _enemy;
     }
 
     public override void Enter()
