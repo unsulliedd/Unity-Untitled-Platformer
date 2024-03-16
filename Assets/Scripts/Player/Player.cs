@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public PlayerAirState AirState { get; private set; }
+    public PlayerAttackState AttackState { get; private set; }
     #endregion
 
     #region Component References
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
         MoveState = new PlayerMoveState(this, StateMachine, "Move");
         JumpState = new PlayerJumpState(this, StateMachine, "Jump");
         AirState = new PlayerAirState(this, StateMachine, "Jump");
+        AttackState = new PlayerAttackState(this, StateMachine, "Attack");
 
         Animator = GetComponentInChildren<Animator>();
         Rigidbody2D = GetComponent<Rigidbody2D>();

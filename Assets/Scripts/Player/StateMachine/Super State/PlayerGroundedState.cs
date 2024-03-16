@@ -26,6 +26,11 @@ public class PlayerGroundedState : PlayerState
             player.InputHandler.JumpInputHelper();
             stateMachine.ChangeState(player.JumpState);
         }
+        else if (attackInput)
+        {
+            player.InputHandler.AttackInputHelper();
+            stateMachine.ChangeState(player.AttackState);
+        }
     }
 
     public override void PhysicUpdate()

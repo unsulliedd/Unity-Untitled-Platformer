@@ -7,6 +7,7 @@ public class PlayerState
     #region Input Variables
     protected float xInput;
     protected bool jumpInput;
+    protected bool attackInput;
     #endregion
     #region Variables
     protected bool isGrounded;
@@ -38,6 +39,7 @@ public class PlayerState
 
         xInput = player.InputHandler.HorizontalInput.x;
         jumpInput = player.InputHandler.JumpInput;
+        attackInput = player.InputHandler.AttackInput;
 
         player.Animator.SetFloat("yVelocity", player.Rigidbody2D.velocity.y);
     }
