@@ -429,6 +429,68 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &786971461
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1376880824839359127, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376880824839359127, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376880824839359127, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376880824839359127, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376880824839359127, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376880824839359127, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376880824839359127, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376880824839359127, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376880824839359127, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376880824839359127, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759089130661214091, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+--- !u!4 &786971462 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1376880824839359127, guid: 923726f745aa5e148af8fb828b7bb97d, type: 3}
+  m_PrefabInstance: {fileID: 786971461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &943594814
 GameObject:
   m_ObjectHideFlags: 3
@@ -775,7 +837,7 @@ Camera:
   m_GameObject: {fileID: 1236194575}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -800,7 +862,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 14.924151
   m_Depth: -1
   m_CullingMask:
@@ -826,7 +888,7 @@ Transform:
   m_GameObject: {fileID: 1236194575}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3859694, y: 1.8905008, z: -29.897488}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1097,7 +1159,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 786971462}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 14.924151
@@ -1126,7 +1188,7 @@ Transform:
   m_GameObject: {fileID: 2022396859}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3859694, y: 1.8905008, z: -29.897488}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1306,3 +1368,4 @@ SceneRoots:
   - {fileID: 1236194578}
   - {fileID: 2022396861}
   - {fileID: 1305582386}
+  - {fileID: 786971461}
