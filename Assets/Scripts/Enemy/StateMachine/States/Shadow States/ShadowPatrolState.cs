@@ -28,6 +28,9 @@ public class ShadowPatrolState : EnemyState
             enemy.Flip();
             stateMachine.ChangeState(enemy.idleState);
         }
+
+        if (enemy.CheckForPlayerInSight())
+            stateMachine.ChangeState(enemy.chaseState);
     }
 
     public override void PhysicUpdate()

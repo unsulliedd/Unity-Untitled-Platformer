@@ -13,12 +13,13 @@ public class EnemyGoblin : Enemy
     public float moveSpeed = 7f;
     public float idleTime = 1f;
 
-
     protected override void Awake()
     {
         base.Awake();
         idleState = new GoblinIdleState(this, stateMachine, "Idle", this);
         patrolState = new GoblinPatrolState(this, stateMachine, "Move", this);
+        chaseState = new GoblinChaseState(this, stateMachine, "Move", this);
+        attackState = new GoblinAttackState(this, stateMachine, "Attack", this);
     }
 
     protected override void Start()

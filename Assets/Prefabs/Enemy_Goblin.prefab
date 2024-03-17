@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4314902186659086313}
   - component: {fileID: 5289713730787329530}
   - component: {fileID: 1776142568797254923}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +58,11 @@ MonoBehaviour:
   groundCheckDistance: 0.52
   wallCheck: {fileID: 7962918178536032267}
   wallCheckDistance: 2.75
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  playerCheck: {fileID: 7962918178536032267}
+  lookRange: 10
   moveSpeed: 7
   idleTime: 1
 --- !u!50 &5289713730787329530
@@ -143,7 +148,7 @@ GameObject:
   - component: {fileID: 2628251099901931930}
   - component: {fileID: 3813660284082448682}
   - component: {fileID: 8163359790103681064}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7962918178536032267}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6667907420873961177}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,6 +1,11 @@
+using UnityEngine;
+
 public class Enemy : SharedEntity
 {
     public EnemyStateMachine stateMachine;
+    public LayerMask playerLayer;
+    public Transform playerCheck;
+    public float lookRange;
 
     protected override void Awake()
     {
@@ -23,4 +28,6 @@ public class Enemy : SharedEntity
     {
         base.FixedUpdate();
     }
+
+    public virtual RaycastHit2D CheckForPlayerInSight() => Physics2D.Raycast(playerCheck.position, Vector2.right * facingDirection, lookRange, playerLayer);
 }

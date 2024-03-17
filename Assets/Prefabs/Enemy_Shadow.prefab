@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3975814031800614817}
   - component: {fileID: 7342683391689619227}
   - component: {fileID: 7729090792441550302}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +58,11 @@ MonoBehaviour:
   groundCheckDistance: 0.54
   wallCheck: {fileID: 1881325845417355168}
   wallCheckDistance: 1.52
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  playerCheck: {fileID: 1881325845417355168}
+  lookRange: 10
   moveSpeed: 10
   idleTime: 0.5
 --- !u!50 &7342683391689619227
@@ -143,7 +148,7 @@ GameObject:
   - component: {fileID: 117228251023653}
   - component: {fileID: 4559085708743459021}
   - component: {fileID: 711867326339396663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7091989647852360820}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1881325845417355168}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

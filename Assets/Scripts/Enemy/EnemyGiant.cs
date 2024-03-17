@@ -12,12 +12,14 @@ public class EnemyGiant : Enemy
     [Header("Giant Attributes")]
     public float moveSpeed = 4f;
     public float idleTime = 2f;
-
+    
     protected override void Awake()
     {
         base.Awake();
         idleState = new GiantIdleState(this, stateMachine, "Idle", this);
         patrolState = new GiantPatrolState(this, stateMachine, "Move", this);
+        chaseState = new GiantChaseState(this, stateMachine, "Move", this);
+        attackState = new GiantAttackState(this, stateMachine, "Attack", this);
     }
 
     protected override void Start()
