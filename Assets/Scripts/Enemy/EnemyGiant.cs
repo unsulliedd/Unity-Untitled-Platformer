@@ -18,6 +18,7 @@ public class EnemyGiant : Enemy
         base.Awake();
         idleState = new GiantIdleState(this, stateMachine, "Idle", this);
         patrolState = new GiantPatrolState(this, stateMachine, "Move", this);
+        attackState = new GiantAttackState(this, stateMachine, "Attack", this);
     }
 
     protected override void Start()

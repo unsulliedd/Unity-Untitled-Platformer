@@ -76,4 +76,9 @@ public class Player : SharedEntity
 
     public void AnimationTrigger() => StateMachine.currentState.AnimationFinishTrigger();
 
+    public void DebugInfo(string message)
+    {
+        Debug.Log(message);
+    }
+
 }

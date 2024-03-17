@@ -19,6 +19,12 @@ public class GoblinAttackState : EnemyState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        enemy.AttackHit();
+
+        if(!enemy.PlayerInRange())
+            stateMachine.ChangeState(enemy.patrolState);
+
     }
 
     public override void PhysicUpdate()

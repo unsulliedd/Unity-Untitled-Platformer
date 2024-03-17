@@ -19,6 +19,7 @@ public class EnemyGoblin : Enemy
         base.Awake();
         idleState = new GoblinIdleState(this, stateMachine, "Idle", this);
         patrolState = new GoblinPatrolState(this, stateMachine, "Move", this);
+        attackState = new GoblinAttackState(this, stateMachine, "Attack", this);
     }
 
     protected override void Start()

@@ -20,6 +20,7 @@ public class EnemyShadow : Enemy
         base.Awake();
         idleState = new ShadowIdleState(this, stateMachine, "Idle", this);
         patrolState = new ShadowPatrolState(this, stateMachine, "Move", this);
+        attackState = new ShadowAttackState(this, stateMachine, "Attack", this);
     }
 
     protected override void Start()

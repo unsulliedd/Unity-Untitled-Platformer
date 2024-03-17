@@ -28,6 +28,18 @@ public class ShadowPatrolState : EnemyState
             enemy.Flip();
             stateMachine.ChangeState(enemy.idleState);
         }
+
+        if (enemy.PlayerInRange())
+        {
+            if (enemy.CanAttack())
+            {
+                stateMachine.ChangeState(enemy.attackState);
+            }
+            else
+            {
+                enemy.MoveTowardsPlayer();
+            }
+        }
     }
 
     public override void PhysicUpdate()

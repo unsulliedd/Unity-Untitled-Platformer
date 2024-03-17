@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public class PlayerGroundedState : PlayerState
 {
     public PlayerGroundedState(Player _player, PlayerStateMachine _stateMachine, string _animationBool) : base(_player, _stateMachine, _animationBool)
@@ -28,6 +30,7 @@ public class PlayerGroundedState : PlayerState
         }
         else if (attackInput)
         {
+            player.AttackHit();   
             player.InputHandler.AttackInputHelper();
             stateMachine.ChangeState(player.AttackState);
         }
