@@ -17,6 +17,9 @@ public class PlayerAttackState : PlayerGroundedState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if (animationTrigger)
+            stateMachine.ChangeState(player.IdleState);
     }
 
     public override void PhysicUpdate()

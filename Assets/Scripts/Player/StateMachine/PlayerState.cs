@@ -1,3 +1,5 @@
+using UnityEngine.UI;
+
 public class PlayerState
 {
     #region References
@@ -11,6 +13,7 @@ public class PlayerState
     #endregion
     #region Variables
     protected bool isGrounded;
+    protected bool animationTrigger;
     private readonly string animationBool;
     #endregion
 
@@ -30,6 +33,7 @@ public class PlayerState
     public virtual void Enter()
     {
         CollisionChecks();
+        animationTrigger = false;
         player.Animator.SetBool(animationBool, true);
     }
 
@@ -47,10 +51,14 @@ public class PlayerState
     public virtual void PhysicUpdate()
     {
         CollisionChecks();
+        if (!isGrounded)
+            player.StateMachine.ChangeState(player.AirState);
     }
 
     public virtual void Exit()
     {
         player.Animator.SetBool(animationBool, false);
     }
+
+    public virtual void AnimationFinishTrigger() => animationTrigger = true;
 }

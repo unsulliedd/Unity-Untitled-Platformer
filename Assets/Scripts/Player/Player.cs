@@ -73,4 +73,7 @@ public class Player : SharedEntity
 
         doubleJumpTimer -= Time.deltaTime;
     }
+
+    public void AnimationTrigger() => StateMachine.currentState.AnimationFinishTrigger();
+
 }
