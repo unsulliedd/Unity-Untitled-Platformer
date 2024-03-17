@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : SharedEntity
 {
     public PlayerStateMachine StateMachine { get; private set; }
 
@@ -13,8 +13,6 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Component References
-    public Animator Animator { get; private set; }
-    public Rigidbody2D Rigidbody2D { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     #endregion
 
@@ -22,8 +20,6 @@ public class Player : MonoBehaviour
     [Header("Move Info")]
     public float moveSpeed = 10f;
     public float moveSpeedInAir = 7f;
-    public int facingDirection = 1;
-    [SerializeField] private bool _isFacingRight = true;
 
     [Header("Jump Info")]
     public float jumpForce = 25;
@@ -34,14 +30,11 @@ public class Player : MonoBehaviour
     public float coyoteTime = 0.2f;
     public float coyoteJumpTimer;
 
-    [Header("Collision Check")]
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float groundCheckDistance = 0.45f;
     #endregion
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         StateMachine = new PlayerStateMachine();
 
         IdleState = new PlayerIdleState(this, StateMachine, "Idle");
@@ -50,47 +43,25 @@ public class Player : MonoBehaviour
         AirState = new PlayerAirState(this, StateMachine, "Jump");
         AttackState = new PlayerAttackState(this, StateMachine, "Attack");
 
-        Animator = GetComponentInChildren<Animator>();
-        Rigidbody2D = GetComponent<Rigidbody2D>();
         InputHandler = GetComponentInChildren<PlayerInputHandler>();
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         StateMachine.Initialize(IdleState);
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         StateMachine.currentState.LogicUpdate();
     }
 
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
         StateMachine.currentState.PhysicUpdate();
-    }
-
-    public void SetZeroVelocity() => Rigidbody2D.velocity = Vector2.zero;
-
-    public void SetVelocity(float xVelocity, float yVelocity)
-    {
-        Rigidbody2D.velocity = new Vector2(xVelocity, yVelocity);
-        FlipController();
-    }
-
-    private void FlipController()
-    {
-        if (InputHandler.HorizontalInput.x < 0 && _isFacingRight)
-            Flip();
-        else if (InputHandler.HorizontalInput.x > 0 && !_isFacingRight)
-            Flip();
-    }
-
-    private void Flip()
-    {
-        transform.Rotate(0f, 180f, 0f);
-        _isFacingRight = !_isFacingRight;
-        facingDirection *= -1;
     }
 
     public void UpdateJumpCounters()
@@ -101,12 +72,5 @@ public class Player : MonoBehaviour
             coyoteJumpTimer -= Time.deltaTime;
 
         doubleJumpTimer -= Time.deltaTime;
-    }
-
-    public bool CheckIfGrounded() => Physics2D.OverlapCircle(groundCheck.transform.position, groundCheckDistance, groundLayer);
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(groundCheck.position, groundCheckDistance);
     }
 }
