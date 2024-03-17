@@ -35,12 +35,12 @@ public class EnemyState
 
     public virtual void LogicUpdate()
     {
+        CollisionChecks();
         stateTimer -= Time.deltaTime;
     }
 
     public virtual void PhysicUpdate()
     {
-        CollisionChecks();
     }
 
     public virtual void Exit()

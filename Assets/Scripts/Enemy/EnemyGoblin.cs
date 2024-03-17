@@ -21,7 +21,6 @@ public class EnemyGoblin : Enemy
         patrolState = new GoblinPatrolState(this, stateMachine, "Move", this);
     }
 
-
     protected override void Start()
     {
         base.Start();

@@ -19,6 +19,7 @@ public class EnemyGiant : Enemy
         idleState = new GiantIdleState(this, stateMachine, "Idle", this);
         patrolState = new GiantPatrolState(this, stateMachine, "Move", this);
     }
+
     protected override void Start()
     {
         base.Start();

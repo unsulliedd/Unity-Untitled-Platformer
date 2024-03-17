@@ -21,6 +21,8 @@ public class ShadowPatrolState : EnemyState
     {
         base.LogicUpdate();
 
+        enemy.SetVelocity(enemy.moveSpeed * enemy.facingDirection, enemy.Rigidbody2D.velocity.y);
+
         if (!isGrounded || isTouchingWall)
         {
             enemy.Flip();
@@ -31,7 +33,5 @@ public class ShadowPatrolState : EnemyState
     public override void PhysicUpdate()
     {
         base.PhysicUpdate();
-
-        enemy.SetVelocity(enemy.moveSpeed * enemy.facingDirection, enemy.Rigidbody2D.velocity.y);
     }
 }
