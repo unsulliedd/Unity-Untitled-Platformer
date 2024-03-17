@@ -21,7 +21,7 @@ public class SharedEntity : MonoBehaviour
     protected virtual void Awake()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
-        Animator = GetComponent<Animator>();
+        Animator = GetComponentInChildren<Animator>();
     }
 
     protected virtual void Start()
